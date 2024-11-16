@@ -8,13 +8,14 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
-            -
+
         - id: church-lite-service-develop
           uri: http://localhost:6050
           predicates:
-            - Path=/api/**
+            - Path=/api/development/**
           filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
+            - RewritePath=/api/development/(?<segment>.*), /${segment}
+
   application:
     name: api-gateway
 
