@@ -2,14 +2,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: front-end-route
-          uri: http://localhost:3000
+        - id: church-lite-service-route
+          uri: http://localhost:5050
           predicates:
-            - Path=/app/**
+            - Path=/api/**
           filters:
-            - RewritePath=/app/(?<segment>.*), /${segment}
+            - RewritePath=/api/(?<segment>.*), /${segment}
   application:
     name: api-gateway
 
 server:
-  port: 7000
+  port: 5000
