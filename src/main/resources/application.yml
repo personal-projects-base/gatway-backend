@@ -2,8 +2,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: church-lite-service-route
+        - id: church-lite-service-route-production
           uri: http://localhost:5050
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+            -
+        - id: church-lite-service-develop
+          uri: http://localhost:6050
           predicates:
             - Path=/api/**
           filters:
