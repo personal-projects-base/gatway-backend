@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.smartverse</groupId>
-	<artifactId>api-gatway</artifactId>
+	<artifactId>gatway-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-gatway</name>
 	<description>Api gatway</description>
