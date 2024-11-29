@@ -17,6 +17,9 @@ spring:
           filters:
             - RewritePath=/sitemercado/(?<segment>.*), /api/v1/${segment}
             - RemoveRequestHeader=X-Forwarded-For
+            - RemoveRequestHeader=Via
+            - RemoveRequestHeader=Forwarded
+            - RemoveRequestHeader=X-Real-IP
 
   application:
     name: api-gateway
