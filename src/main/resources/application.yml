@@ -20,6 +20,7 @@ spring:
             - RemoveRequestHeader=Via
             - RemoveRequestHeader=Forwarded
             - RemoveRequestHeader=X-Real-IP
+            - AddRequestHeader=X-Forwarded-For, 0.0.0.0
 
   application:
     name: api-gateway
@@ -29,4 +30,5 @@ server:
 
 logging:
   level:
+    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
     org.springframework.cloud.gateway: DEBUG
