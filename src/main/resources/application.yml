@@ -9,6 +9,15 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
+
+        - id: sitemercado-backend
+          uri: http://service.sitemercado.com.br
+          predicates:
+            - Path=/sitemercado/**  # Define que as chamadas para /sitemercado/ serão redirecionadas
+          filters:
+            - RewritePath=/sitemercado/(?<segment>.*), /api/v1/${segment} # Remove /sitemercado e adiciona o caminho necessário
+
+
   application:
     name: api-gateway
 
