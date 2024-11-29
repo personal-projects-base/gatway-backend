@@ -13,9 +13,10 @@ spring:
         - id: sitemercado-backend
           uri: https://service.sitemercado.com.br
           predicates:
-            - Path=/sitemercado/**  # Define que as chamadas para /sitemercado/ serão redirecionadas
+            - Path=/sitemercado/**
           filters:
             - RewritePath=/sitemercado/(?<segment>.*), /api/v1/${segment}
+            - RemoveRequestHeader=X-Forwarded-For
 
   application:
     name: api-gateway
