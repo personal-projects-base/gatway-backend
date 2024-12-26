@@ -7,14 +7,14 @@ spring:
           predicates:
             - Path=/api/church-lite/**
           filters:
-            - RewritePath=/api/church-lite/(?<segment>.*), /${segment}
+            - RewritePath=/api/(?<segment>.*), /${segment}
 
         - id: smart-report-backend
           uri: http://localhost:5070
           predicates:
             - Path=/api/smartreport/**
           filters:
-            - RewritePath=/api/smartreport/(?<segment>.*), /${segment}
+            - RewritePath=/api/(?<segment>.*), /${segment}
 
   application:
     name: api-gateway
