@@ -5,28 +5,16 @@ spring:
         - id: church-lite-backend
           uri: http://localhost:5050
           predicates:
-            - Path=/api/**
+            - Path=/api/church-lite/**
           filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
+            - RewritePath=/api/church-lite/(?<segment>.*), /${segment}
 
         - id: smart-report-backend
           uri: http://localhost:5070
           predicates:
-            - Path=/api/**
+            - Path=/api/smartreport/**
           filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
-
-        - id: sitemercado-backend
-          uri: https://service.sitemercado.com.br
-          predicates:
-            - Path=/sitemercado/**
-          filters:
-            - RewritePath=/sitemercado/(?<segment>.*), /api/v1/${segment}
-            - RemoveRequestHeader=X-Forwarded-For
-            - RemoveRequestHeader=Via
-            - RemoveRequestHeader=Forwarded
-            - RemoveRequestHeader=X-Real-IP
-            - AddRequestHeader=X-Forwarded-For, 0.0.0.0
+            - RewritePath=/api/smartreport/(?<segment>.*), /${segment}
 
   application:
     name: api-gateway
