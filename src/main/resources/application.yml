@@ -9,6 +9,12 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
+        - id: smart-report-backend
+          uri: http://localhost:5070
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
 
         - id: sitemercado-backend
           uri: https://service.sitemercado.com.br
