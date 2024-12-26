@@ -5,12 +5,24 @@ spring:
         - id: church-lite-backend
           uri: http://localhost:5050
           predicates:
-            - Path=/api/**
+            - Path=/api/church-lite/**
           filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
+            - RewritePath=/api/church-lite/(?<segment>.*), /${segment}
+
+        - id: smart-report-backend
+          uri: http://localhost:5070
+          predicates:
+            - Path=/api/smartreport/**
+          filters:
+            - RewritePath=/api/smartreport/(?<segment>.*), /${segment}
 
   application:
     name: api-gateway
 
 server:
   port: 5000
+
+logging:
+  level:
+    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
+    org.springframework.cloud.gateway: DEBUG
