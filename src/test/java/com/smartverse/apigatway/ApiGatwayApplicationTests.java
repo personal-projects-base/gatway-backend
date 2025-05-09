@@ -1,4 +1,4 @@
-package com.smartverse.api_gatway;
+package com.smartverse.apigatway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
