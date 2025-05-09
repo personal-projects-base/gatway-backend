@@ -16,6 +16,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
+        - id: smart-finance-telegram-backend
+          uri: http://localhost:5080
+          predicates:
+            - Path=/api/smartfinance/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+
   application:
     name: api-gateway
 
