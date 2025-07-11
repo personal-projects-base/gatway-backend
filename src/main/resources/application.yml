@@ -3,6 +3,25 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns:
+              - "http://localhost:4200"
+              - "https://develop.4libert.com"
+              - "https://4libert.com"
+              - "https://app.4libert.com"
+              - "https://smartverse.com.br"
+              - "https://develop.smartverse.com.br"
+              - "https://app.smartverse.com.br"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
         - id: church-lite-backend
           uri: http://localhost:5050
