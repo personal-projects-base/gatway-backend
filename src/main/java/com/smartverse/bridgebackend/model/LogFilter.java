@@ -1,4 +1,4 @@
-package com.smartverse.apigatway.model;
+package com.smartverse.bridgebackend.model;
 
 import lombok.Data;
 import lombok.Getter;

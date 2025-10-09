@@ -1,4 +1,4 @@
-package com.smartverse.apigatway.config.context;
+package com.smartverse.bridgebackend.config.context;
 
 import org.springframework.stereotype.Component;
 

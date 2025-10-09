@@ -1,9 +1,9 @@
-package com.smartverse.apigatway.config.mongo;
+package com.smartverse.bridgebackend.config.mongo;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.smartverse.apigatway.config.context.EnumConfigContext;
+import com.smartverse.bridgebackend.config.context.EnumConfigContext;
 import jakarta.inject.Singleton;
 import lombok.Getter;
 

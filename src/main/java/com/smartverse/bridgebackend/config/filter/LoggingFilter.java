@@ -1,7 +1,7 @@
-package com.smartverse.apigatway.config.filter;
+package com.smartverse.bridgebackend.config.filter;
 
-import com.smartverse.apigatway.model.LogFilter;
-import com.smartverse.apigatway.service.log.LogService;
+import com.smartverse.bridgebackend.model.LogFilter;
+import com.smartverse.bridgebackend.service.log.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;

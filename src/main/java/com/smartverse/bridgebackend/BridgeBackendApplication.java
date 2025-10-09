@@ -1,13 +1,13 @@
-package com.smartverse.apigatway;
+package com.smartverse.bridgebackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiGatwayApplication {
+public class BridgeBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatwayApplication.class, args);
+		SpringApplication.run(BridgeBackendApplication.class, args);
 	}
 
 

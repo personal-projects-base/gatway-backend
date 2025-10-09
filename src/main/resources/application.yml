@@ -52,7 +52,7 @@ spring:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
   application:
-    name: api-gateway
+    name: smart-bridge-backend
 
 server:
   port: 5000

@@ -1,10 +1,10 @@
-package com.smartverse.apigatway;
+package com.smartverse.bridgebackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiGatwayApplicationTests {
+class BridgeBackendApplicationTests {
 
 	@Test
 	void contextLoads() {

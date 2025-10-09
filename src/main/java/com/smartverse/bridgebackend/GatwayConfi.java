@@ -1,4 +1,4 @@
-package com.smartverse.apigatway;
+package com.smartverse.bridgebackend;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;

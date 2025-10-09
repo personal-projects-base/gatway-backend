@@ -1,8 +1,8 @@
-package com.smartverse.apigatway.service.log;
+package com.smartverse.bridgebackend.service.log;
 
 import com.mongodb.client.MongoCollection;
-import com.smartverse.apigatway.config.mongo.ConnectionMongoDb;
-import com.smartverse.apigatway.model.LogFilter;
+import com.smartverse.bridgebackend.config.mongo.ConnectionMongoDb;
+import com.smartverse.bridgebackend.model.LogFilter;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
 
