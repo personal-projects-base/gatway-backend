@@ -1,6 +1,27 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns:
+              - "http://localhost:4200"
+              - "https://develop.4libert.com"
+              - "https://4libert.com"
+              - "https://app.4libert.com"
+              - "https://smartverse.com.br"
+              - "https://develop.smartverse.com.br"
+              - "https://app.smartverse.com.br"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
         - id: church-lite-backend
           uri: http://localhost:5050
@@ -16,8 +37,29 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
+        - id: smart-agendei-backend
+          uri: http://localhost:5030
+          predicates:
+            - Path=/api/smartagendei/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+
+        - id: smart-finance-telegram-backend
+          uri: http://localhost:5080
+          predicates:
+            - Path=/api/smartfinance/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+
+        - id: smart-game-bank
+          uri: http://localhost:8020
+          predicates:
+            - Path=/api/game-bank/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+
   application:
-    name: api-gateway
+    name: smart-bridge-backend
 
 server:
   port: 5000
