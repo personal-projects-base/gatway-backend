@@ -51,6 +51,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*), /${segment}
 
+        - id: smart-game-bank
+          uri: http://localhost:8020
+          predicates:
+            - Path=/api/game-bank/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /${segment}
+
   application:
     name: smart-bridge-backend
 
