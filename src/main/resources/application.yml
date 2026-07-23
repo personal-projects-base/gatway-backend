@@ -22,41 +22,6 @@ spring:
               - OPTIONS
             allowedHeaders: "*"
             allowCredentials: true
-      routes:
-        - id: church-lite-backend
-          uri: http://localhost:5050
-          predicates:
-            - Path=/api/church-lite/**
-          filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
-
-        - id: smart-report-backend
-          uri: http://localhost:5070
-          predicates:
-            - Path=/api/smartreport/**
-          filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
-
-        - id: smart-agendei-backend
-          uri: http://localhost:5030
-          predicates:
-            - Path=/api/smartagendei/**
-          filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
-
-        - id: smart-finance-telegram-backend
-          uri: http://localhost:5080
-          predicates:
-            - Path=/api/smartfinance/**
-          filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
-
-        - id: smart-game-bank
-          uri: http://localhost:8020
-          predicates:
-            - Path=/api/game-bank/**
-          filters:
-            - RewritePath=/api/(?<segment>.*), /${segment}
 
   application:
     name: smart-bridge-backend
@@ -68,3 +33,8 @@ logging:
   level:
     org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
     org.springframework.cloud.gateway: DEBUG
+
+# As rotas são carregadas exclusivamente da coleção MongoDB "gateway_routes".
+gateway:
+  routes:
+    refresh-interval-ms: ${GATEWAY_ROUTES_REFRESH_INTERVAL_MS:15000}
