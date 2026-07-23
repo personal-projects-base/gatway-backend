@@ -66,14 +66,18 @@ public class MongoRouteDefinitionRepository implements RouteDefinitionRepository
     }
 
     Document toDocument(RouteDefinition route, boolean enabled) {
+        Map<String, Object> metadata = new LinkedHashMap<>();
+        if (route.getMetadata() != null) {
+            metadata.putAll(route.getMetadata());
+        }
         return new Document("_id", route.getId())
                 .append("uri", route.getUri().toString())
-                .append("service", route.getMetadata().get("service"))
+                .append("service", metadata.get("service"))
                 .append("order", route.getOrder())
                 .append("enabled", enabled)
                 .append("predicates", route.getPredicates().stream().map(this::toDocument).toList())
                 .append("filters", route.getFilters().stream().map(this::toDocument).toList())
-                .append("metadata", new Document(route.getMetadata()));
+                .append("metadata", new Document(metadata));
     }
 
     RouteDefinition fromDocument(Document source) {
@@ -87,6 +91,9 @@ public class MongoRouteDefinitionRepository implements RouteDefinitionRepository
         if (metadata != null) {
             route.setMetadata(new LinkedHashMap<>(metadata));
         }
+        if (route.getMetadata() == null) {
+            route.setMetadata(new LinkedHashMap<>());
+        }
         String service = source.getString("service");
         if (StringUtils.hasText(service)) {
             route.getMetadata().put("service", service);
@@ -97,12 +104,20 @@ public class MongoRouteDefinitionRepository implements RouteDefinitionRepository
 
     private Document toDocument(PredicateDefinition definition) {
         return new Document("name", definition.getName())
-                .append("args", new Document(definition.getArgs()));
+                .append("args", mapDocument(definition.getArgs()));
     }
 
     private Document toDocument(FilterDefinition definition) {
         return new Document("name", definition.getName())
-                .append("args", new Document(definition.getArgs()));
+                .append("args", mapDocument(definition.getArgs()));
+    }
+
+    private Document mapDocument(Map<String, String> values) {
+        Document document = new Document();
+        if (values != null) {
+            values.forEach(document::append);
+        }
+        return document;
     }
 
     private List<PredicateDefinition> readPredicates(Document source) {
